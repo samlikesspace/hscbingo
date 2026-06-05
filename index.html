@@ -1,1 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #fff;
+        }
+
+        #welcome {
+            width: 50vw;
+            height: 100vh;
+            position: fixed;
+            left: 0;
+        }
+
+        main {
+            position: fixed;
+            right: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            width: 50vw;
+            height: 100vh;
+            background-color: #000000;
+        }
+        
+        #disclaimer {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            color: grey;
+            cursor: pointer;
+            z-index: 10;
+            background: transparent;
+            border: none;
+        }
+
+        @media (max-width: 600px) {
+            #welcome { display: none; }
+            main { width: 100vw; }
+        }
+
+        #notification {
+            display: none;  
+            position: fixed;
+            bottom: 50vh;
+            left: 50vw;
+            transform: translate(-50%, 50%);
+            background-color: #000000;
+            border: 1px solid #fff;
+            color: #fff;
+            padding: 20px;
+            z-index: 1000;
+        }
+
+        #notification.active {
+            display: block;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            color: #fff;
+            cursor: pointer;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <img src="https://www.w3schools.com/w3images/fjords.jpg" id="welcome">
+    <main>
+        <!-- Already signed in -->
+        <h1>Welcome back!</h1>
+        <button id="sign-out">Resume Game</button>
+        <details><summary>Available Teachers</summary><div id="game-history"></div></details>
+
+        <!-- Not signed in -->
+        <h1>Welcome!</h1>
+        <p>This website allows you to play bingo, but with a twist...<br>You play bingo about <strong>HSC Teachers!</strong></p>
+        <form>
+            <label for="name">Enter your name to start playing:</label><br>
+            <input type="text" id="name" name="name"><br>
+        </form><button id="sign-in">Start Game</button>
+    </main>
+
+    <div id="notification-container"><div id="notification"></div></div>
+    <button id="disclaimer" onclick="showNotification('This website is a parody and is not affiliated with any real teachers or schools. All characters and events are fictional.')">Disclaimer</button>
+
+    <script>
+        function showNotification(text) {
+          const notification = document.getElementById('notification');
+          const notificationContainer = document.getElementById('notification-container');
+
+          notification.innerHTML = text + '<button class="close-btn" onclick="this.parentElement.remove()">x</button>';
+          notification.classList.add('active');
+          notificationContainer.style.filter = 'blur(5px)';
+        }
+    </script>
+</body>
+</html>
 
