@@ -1,1 +1,28 @@
-
+[
+  {
+    "code": "SBN",
+    "name": "Mrs O’Brian",
+    "tiles": [
+      "CRASHOUT",
+      "ABIGAIL RANT",
+      "LETS SEE YOUR WORK",
+      "DONT NEED A PERSONAL INVITATION",
+      "HEAD OFF THE DESK",
+      "LOCK IN",
+      "DON’T DRAW ON YOUR SKIN",
+      "ENGLISH ISN’T FUN",
+      "sample"
+    ]
+  },
+  {
+    "code": "PCL",
+    "name": "Mr Clunas",
+    "tiles": [
+      "",
+      "Taps the projector screen",
+      "Says 'Back in my day...'",
+      "References a primary source",
+      "Wear the same corduroy blazer"
+    ]
+  }
+]

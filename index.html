@@ -11,6 +11,7 @@
             margin: 0;
             padding: 0;
             color: #fff;
+            background-color: #000;
         }
 
         #welcome {
@@ -35,8 +36,8 @@
         
         #disclaimer {
             position: absolute;
-            bottom: 0;
-            left: 0;
+            bottom: 15px;
+            left: 15px;
             color: grey;
             cursor: pointer;
             z-index: 10;
@@ -50,21 +51,24 @@
         }
 
         #notification {
-            display: none;  
+            display: none;
             position: fixed;
-            bottom: 50vh;
-            left: 50vw;
-            transform: translate(-50%, 50%);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
             background-color: #000000;
-            border: 1px solid #fff;
+            border: 2px solid #fff;
             color: #fff;
-            padding: 20px;
             z-index: 1000;
+            max-width: 400px;
+            width: 80%;
         }
 
-        #notification.active {
-            display: block;
-        }
+        #notification h1 { padding: 0px 20px 10px 20px; border-bottom: 2px solid #fff; }
+        #notification p { padding: 5px 20px; }
+        #notification.active { display: block; }
+        #notification-bottom { padding: 10px 20px; border-top: 2px solid #fff; display: flex; justify-content: space-between; align-items: center; }
+        #notification-bottom a { color: yellow; }
 
         .close-btn {
             background: none;
@@ -72,40 +76,52 @@
             color: #fff;
             cursor: pointer;
             font-weight: bold;
-            margin-left: 10px;
+            font-size: 16px;
         }
     </style>
 </head>
 <body>
-    <img src="https://www.w3schools.com/w3images/fjords.jpg" id="welcome">
-    <main>
-        <!-- Already signed in -->
-        <h1>Welcome back!</h1>
-        <button id="sign-out">Resume Game</button>
-        <details><summary>Available Teachers</summary><div id="game-history"></div></details>
 
-        <!-- Not signed in -->
-        <h1>Welcome!</h1>
-        <p>This website allows you to play bingo, but with a twist...<br>You play bingo about <strong>HSC Teachers!</strong></p>
-        <form>
-            <label for="name">Enter your name to start playing:</label><br>
-            <input type="text" id="name" name="name"><br>
-        </form><button id="sign-in">Start Game</button>
-    </main>
+    <div id="page-content">
+        <img src="https://www.w3schools.com/w3images/fjords.jpg" id="welcome">
+        <main>
+            <!-- Already signed in -->
+            <h1>Welcome back!</h1>
+            <button id="sign-out">Resume Game</button>
+            <details><summary>Available Teachers</summary><div id="game-history"></div></details>
 
-    <div id="notification-container"><div id="notification"></div></div>
-    <button id="disclaimer" onclick="showNotification('This website is a parody and is not affiliated with any real teachers or schools. All characters and events are fictional.')">Disclaimer</button>
+            <!-- Not signed in -->
+            <h1>Welcome!</h1>
+            <p>This website allows you to play bingo, but with a twist...<br>You play bingo about <strong>HSC Teachers!</strong></p>
+            <form>
+                <label for="name">Enter your name to start playing:</label><br>
+                <input type="text" id="name" name="name"><br>
+            </form>
+            <button id="sign-in">Start Game</button>
+        </main>
+
+        <button id="disclaimer" onclick="showNotification('DISCLAIMER', 'This website was made by a HSC Student. The purpose was to make lessons funner & not to throw shade on any teacher! Keep this is mind while exploring, thanks.', 'Learn more', 'https://example.com')">Disclaimer</button>
+    </div>
+
+
+    <div id="notification"></div>
 
     <script>
-        function showNotification(text) {
+        function showNotification(title, text, link, url) {
           const notification = document.getElementById('notification');
-          const notificationContainer = document.getElementById('notification-container');
+          const pageContent = document.getElementById('page-content');
 
-          notification.innerHTML = text + '<button class="close-btn" onclick="this.parentElement.remove()">x</button>';
+          notification.innerHTML = `
+            <h1> ${title}</h1>
+            <p>${text}</p> 
+            <div id="notification-bottom">
+                <a href="${url}" target="_blank">${link}</a>
+                <button class="close-btn" onclick="document.getElementById('notification').classList.remove('active'); document.getElementById('page-content').style.filter = 'none';">x</button>
+            </div>`;
+          
           notification.classList.add('active');
-          notificationContainer.style.filter = 'blur(5px)';
+          pageContent.style.filter = 'blur(5px)';
         }
     </script>
 </body>
 </html>
-
