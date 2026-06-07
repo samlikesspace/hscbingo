@@ -1,7 +1,7 @@
 [
   {
     "code": "SBN",
-    "name": "Mrs O’Brian",
+    "name": "Mrs O`Brian",
     "tiles": [
       "CRASHOUT",
       "ABIGAIL RANT",
@@ -9,8 +9,8 @@
       "DONT NEED A PERSONAL INVITATION",
       "HEAD OFF THE DESK",
       "LOCK IN",
-      "DON’T DRAW ON YOUR SKIN",
-      "ENGLISH ISN’T FUN",
+      "DON`T DRAW ON YOUR SKIN",
+      "ENGLISH ISN`T FUN",
       "sample"
     ]
   },
